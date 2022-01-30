@@ -1,10 +1,10 @@
-obj-m += hellokernel.o
-hellokernel-objs += module-info.o hellokernel.rust.o
+obj-m += $(MODULE_NAME).o
+$(MODULE_NAME)-objs += module-info.o $(MODULE_NAME).rust.o
 
 .PHONY: build-rust
 
-$(src)/target/$(RUST_TARGET)/release/libhellokernel.a: build-rust
-	cd $(src); cargo b --release -Z build-std=core --target=$(RUST_TARGET)
+$(src)/target/$(RUST_TARGET)/release/lib$(MODULE_NAME).a: build-rust
+	cd $(src); cargo b --release -Z build-std=core,alloc --target=$(RUST_TARGET)
 
 %.rust.o: target/$(RUST_TARGET)/release/lib%.a
 	$(LD) -r -o $@ --whole-archive $<
