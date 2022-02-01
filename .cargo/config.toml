@@ -1,0 +1,3 @@
+[alias]
+c = "check -Z build-std=core,alloc --target=x86_64-unknown-none-linuxkernel"
+b = "build --release -Z build-std=core,alloc --target=x86_64-unknown-none-linuxkernel"
