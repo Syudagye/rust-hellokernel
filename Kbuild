@@ -4,7 +4,7 @@ $(MODULE_NAME)-objs += module-info.o $(MODULE_NAME).rust.o
 .PHONY: build-rust
 
 $(src)/target/$(RUST_TARGET)/release/lib$(MODULE_NAME).a: build-rust
-	cd $(src); cargo b --release -Z build-std=core,alloc --target=$(RUST_TARGET)
+	cd $(src); cargo b 
 
 %.rust.o: target/$(RUST_TARGET)/release/lib%.a
 	$(LD) -r -o $@ --whole-archive $<
