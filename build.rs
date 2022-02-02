@@ -2,7 +2,7 @@ use std::{env, path::PathBuf, process::Command};
 
 use bindgen;
 
-const ALLOWED_FUNCTIONS: &[&str] = &["_printk"];
+const ALLOWED_FUNCTIONS: &[&str] = &["_printk", "__kmalloc", "kfree"];
 
 fn main() {
     let kernel_build_dir = format!(
