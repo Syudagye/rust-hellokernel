@@ -72,3 +72,14 @@ pub extern "C" fn cleanup_module() {
         bindings::_printk("See ya kernel :p !\n\0".as_ptr() as *const c_char);
     }
 }
+
+// TODO: Make a modinfo! macro to automate this process
+#[link_section = ".modinfo"]
+#[used]
+pub static LICENSE: [u8; 12] = *b"license=GPL\0";
+#[link_section = ".modinfo"]
+#[used]
+pub static AUTHOR: [u8; 16] = *b"author=Syudagye\0";
+#[link_section = ".modinfo"]
+#[used]
+pub static DESC: [u8; 58] = *b"description=Just a simple kernel module written in rust !\0";

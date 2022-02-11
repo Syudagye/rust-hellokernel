@@ -1,5 +1,5 @@
 obj-m += $(MODULE_NAME).o
-$(MODULE_NAME)-objs += module-info.o $(MODULE_NAME).rust.o
+$(MODULE_NAME)-objs += $(MODULE_NAME).rust.o
 
 .PHONY: build-rust
 
